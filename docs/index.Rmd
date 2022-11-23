@@ -1,7 +1,7 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: "The United States Prison Populations"
+author: "Ayaan Rahim"
+date: '2022-11-22'
 output: html_document
 ---
 
@@ -10,36 +10,46 @@ source("../source/a4-helpers.R")
 source("../source/analysis.R")
 ```
 
-## Abstract 
-[TODO: Include a short abstract (about 50 words)]
+## Abstract
 
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
+In this report I look into the possible biases within the U.S. prison system. The data set I use provides information regarding prison populations of various counties within the U.S. from 1970 to 2018. These populations are broken down into various groups, such as by gender, ethnicity, and age. With this information, I hope to discover possible areas of unfair placement of individuals within the U.S. prison system.
 
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
+## Introduction
 
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
+America has been known as the land of the free, however, when looking at the way minorities and underrepresented groups are treated, this may not be accurate. In this data set, I look at the prison poopulations across the country, from 1970 to 2018. This provides a look into how certain groups are mistreated through the U.S. justice system, and the goal is to discover these inequalities as it is one of many current issues within the country. The direct stakeholders of this data set are prison inmates and those who have gone through the prison system whether fairly or unfairly. The indirect stakeholders are the government, prison staff, and those who play a role in the judicial system. In this report I will attempt to answer questions such as which minority groups have a higher prison population as well as how this is spread across various areas of the country.
 
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
+## Data Summary
+
+Within this dataset, there is information regarding the total population of each county in the country from 1970 to 2018, as well as jail populations for various ethnicities and age groups. In the most recent year, 2018, the county with the highest jail population was **`r max_jail_pop_2018`**, and this population was **`r max_jail_pop_2018_num`**, however the county with the highest population in 2018 was also **`r max_pop_2018`**. The average jail population across all counties in this year was **`r average_jail_pop_2018`**.
+
+## Growth of the U.S. Prison Population
+
+```{r plot_jail_pop_for_us(), echo = FALSE}
+plot_jail_pop_for_us()
 ```
 
-## Introduction 
-[TODO]
+**How has the total jail population in the U.S. changed over time?** In this chart, there is a rapid growth of the total jail population in the country from around 1980 to 2005. After 2005, the total jail population remains relatively stable, with a slight decrease towards 2018.
 
-## Data Summary 
-[TODO]
+## Growth of Prison Population by State
 
-[TODO ... other sections ... See Canvas for details]
+```{r plot_jail_pop_by_states(states), echo = FALSE}
+plot_jail_pop_by_states(c("NY", "FL", "CA", "TX"))
+```
 
-_All the very best with your work!_
+**How do certain states compare when looking at total jail population?** I chose CA, FL, NY, and TX because these are the states with the highest populations in the country. California consistently has the highest jail population, while all of the states show a similar trend of growth and then a decrease from 2010 to 2018.
 
+## U.S. White vs. Latinx Prison Population
+
+```{r plot_latinx_white_jail_pop, echo = FALSE}
+plot_latinx_white_jail_pop()
+```
+
+**What are some possible inequalities within the U.S. jail populations when looking at minorities?** This graph shows the White verses the Latinx prison population in the U.S. from 1970 to 2018. An inequality is present throughout the years as the Latinx prison population is consistantly much higher than the White prison population, with a slight decline as we approach 2018.
+
+## Black Prison Population in 2018 across the U.S.
+
+```{r plot_2018_black_prison_pop(), echo = FALSE}
+plot_2018_black_prison_pop()
+```
+
+**How does the Black prison population compare across the country?** This map shows the Black prison population across the U.S. in 2018. Looking at the map, there are certain counties in which this rate is very high. Although this can be due to a higher total population in these areas, it is worth looking into these areas as there can be discrimination and racial profiling that play a role in these prison populations. This data may not be enough to draw conclusions however it provides a general idea of wheere to begin looking for injustice issues based on race.
